@@ -1,0 +1,12 @@
+{
+  "name": "Root Dockerfile",
+  "context": "..",
+  "dockerFile": "../Dockerfile",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/personal/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/workspaces/personal/${localWorkspaceFolderBasename}"
+}
