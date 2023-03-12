@@ -79,8 +79,38 @@ RUN echo 'source ~/init_shell.sh' >> ${shell_rc}
 # ------------------------------------------------------------------------------
 # - Common Lisp ----------------------------------------------------------------
 # ------------------------------------------------------------------------------
+# Details: https://www.quicklisp.org/beta/
+
 # RUN apt-get update
 # RUN apt-get install -y sbcl
 # RUN curl -O https://beta.quicklisp.org/quicklisp.lisp \
+#   && [ "$(sha256sum quicklisp.lisp | tr ' ' '\n' | head -n1)" = "4a7a5c2aebe0716417047854267397e24a44d0cce096127411e9ce9ccfeb2c17" ] \
+#   && echo "success - valid shasum" || (echo "failure - invalid shasum" && exit 1)
 #   && curl -O https://beta.quicklisp.org/quicklisp.lisp.asc \
 #   && gpg --verify quicklisp.lisp.asc quicklisp.lisp
+
+# ------------------------------------------------------------------------------
+# - Lua ------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# Details: https://www.lua.org/download.html
+
+# RUN apt-get install -y build-essential
+# RUN curl -R -O http://www.lua.org/ftp/lua-5.4.4.tar.gz
+# RUN tar zxf lua-5.4.4.tar.gz
+# RUN cd lua-5.4.4 && make all test
+# RUN make install
+# RUN rm -rf lua-5.4.4.tar.gz
+
+# ------------------------------------------------------------------------------
+# - Fennel ---------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# Details: https://fennel-lang.org/setup#downloading-fennel
+
+# RUN wget https://fennel-lang.org/downloads/fennel-1.3.0
+# RUN wget wget https://fennel-lang.org/downloads/fennel-1.3.0.asc
+
+# TODO(marcelocra): understand how to properly check gpg signatures. This might
+# not work right now.
+# RUN gpg --verify fennel-1.3.0.asc \
+#   && chmod +x fennel-1.3.0 \
+#   && mv fennel-1.3.0 /usr/local/bin
